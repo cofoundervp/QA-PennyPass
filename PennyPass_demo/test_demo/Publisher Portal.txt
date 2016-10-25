@@ -1,0 +1,121 @@
+*** Settings ***
+Library           ExtendedSelenium2Library
+
+*** Variables ***
+
+*** Test Cases ***
+Test1- Publisher logs in Portal
+    [Documentation]    Verify Publisher logging \ in to Portal successfully.
+    Open Browser    http://staging.publisher.pennypass.com    gc
+    Input Text    email    stewart12
+    Input Password    password    stewart12
+    #click login button
+    Click Button    css=button.btn.btn-primary    True
+    #Verify avatar icon be existed
+    Page Should Contain Element    css=div.dropdown-toggle.account-avatar    message=Contain avatar icon, login successfully !!!
+
+Test 2-Publisher logs out Portal
+    [Documentation]    Verify Publisher logging \ in to Portal successfully.
+    Open Browser    http://staging.publisher.pennypass.com    gc
+    Input Text    email    stewart12
+    Input Password    password    stewart12
+    #click login button
+    Click Button    css=button.btn.btn-primary    True
+    # Click on avatar icon to logout
+    Click Element    css=div.dropdown-toggle.account-avatar    true
+    # click on log out
+    Click Element    xpath=//nav[@id='mainNav']/a[2]/div/div/ul/li[4]
+    #Verify avatar icon be existed
+    Page Should Contain Button    css=button.btn.btn-primary
+
+Test 3 - Settings Page displays name of Publisher correctly
+    [Documentation]    Verify Settings page displaying company info: name, phone, \ address
+    Open Browser    http://staging.publisher.pennypass.com    gc
+    Input Text    email    stewart12
+    Input Password    password    stewart12
+    #click login button
+    Click Button    css=button.btn.btn-primary    True
+    # Click on avatar icon to logout
+    Click Element    css=div.dropdown-toggle.account-avatar    true
+    # click on Settings
+    Click Element    xpath=//nav[@id='mainNav']/a[2]/div/div/ul/li[2]
+    #Verify Publisher's name
+    Page Should Contain    //div[3]/div[3]
+
+Test 4 - Settings Page displays phone no. of Publisher correctly
+    [Documentation]    Verify Settings page displaying company info: name, phone, \ address
+    Open Browser    http://staging.publisher.pennypass.com    gc
+    Input Text    email    stewart12
+    Input Password    password    stewart12
+    #click login button
+    Click Button    css=button.btn.btn-primary    True
+    # Click on avatar icon to logout
+    Click Element    css=div.dropdown-toggle.account-avatar    true
+    # click on Settings
+    Click Element    xpath=//nav[@id='mainNav']/a[2]/div/div/ul/li[2]
+    #Verify phone numbers
+    Page Should Contain    //div[3]/div[3]
+
+Test 5 - Settings Page displays address of Publisher correctly
+    [Documentation]    Verify Settings page displaying company info: name, phone, \ address
+    Open Browser    http://staging.publisher.pennypass.com    gc
+    Input Text    email    stewart12
+    Input Password    password    stewart12
+    #click login button
+    Click Button    css=button.btn.btn-primary    True
+    # Click on avatar icon to logout
+    Click Element    css=div.dropdown-toggle.account-avatar    true
+    # click on Settings
+    Click Element    xpath=//nav[@id='mainNav']/a[2]/div/div/ul/li[2]
+    #Verify address
+    Page Should Contain    //div[3]/div[5]
+
+Test 6 - Settings Page displays Team member's name correctly
+    [Documentation]    Verify Settings page displaying company info: name, phone, \ address
+    Open Browser    http://staging.publisher.pennypass.com    gc
+    Input Text    email    stewart12
+    Input Password    password    stewart12
+    #click login button
+    Click Button    css=button.btn.btn-primary    True
+    # Click on avatar icon to logout
+    Click Element    css=div.dropdown-toggle.account-avatar    true
+    # click on Settings
+    Click Element    xpath=//nav[@id='mainNav']/a[2]/div/div/ul/li[2]
+    #Select Team statement
+    Click Link    Team
+    # Verify name of team members
+    Table Cell Should Contain    table.team-table    1    0    stewart12 stewart12
+
+Test 7 - Settings Page displays Team member's email correctly
+    [Documentation]    Verify Settings page displaying company info: name, phone, \ address
+    member's email correctly
+    Open Browser    http://staging.publisher.pennypass.com    gc
+    Input Text    email    stewart12
+    Input Password    password    stewart12
+    #click login button
+    Click Button    css=button.btn.btn-primary    True
+    # Click on avatar icon to logout
+    Click Element    css=div.dropdown-toggle.account-avatar    true
+    # click on Settings
+    Click Element    xpath=//nav[@id='mainNav']/a[2]/div/div/ul/li[2]
+    #Select Team statement
+    Click Link    Team
+    # Verify name of team members
+    Table Cell Should Contain    table.team-table    1    1    stewart12@b.com
+
+Test 8 - Settings Page displays Team member's role correctly
+    [Documentation]    Verify Settings page displaying company info: name, phone, \ address
+    member's email correctly
+    Open Browser    http://staging.publisher.pennypass.com    gc
+    Input Text    email    stewart12
+    Input Password    password    stewart12
+    #click login button
+    Click Button    css=button.btn.btn-primary    True
+    # Click on avatar icon to logout
+    Click Element    css=div.dropdown-toggle.account-avatar    true
+    # click on Settings
+    Click Element    xpath=//nav[@id='mainNav']/a[2]/div/div/ul/li[2]
+    #Select Team statement
+    Click Link    Team
+    # Verify name of team members
+    Table Cell Should Contain    table.team-table    1    2    Admin
